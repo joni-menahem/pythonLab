@@ -1,6 +1,12 @@
 import random
 
 
+def sort_cards(player_cards):
+    # will sort based on color first (blue, green, orange, red) and then by value
+    sorted_list = sorted(player_cards, key=lambda x: (x[0], int(x[1:])))
+    return sorted_list
+
+
 def rotateList(list_in, x):
     # rotating the list to the left by 'x' steps
     return list_in[-x % len(list_in):] + list_in[:-x % len(list_in)]
@@ -41,7 +47,7 @@ def dealingCards_3p():
     p1cards = []
     p2cards = []
     p3cards = []
-    while len(p1cards) < 10:
+    while len(p1cards) < 12:
         card = random.choice(deck)
         deck.remove(card)
         p1cards.append(card)

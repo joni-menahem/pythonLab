@@ -1,20 +1,9 @@
-import random
+def sort_cards(player_cards):
+    # will sort based on color first (blue, green, orange, red) and then by value
+    sorted_list = sorted(player_cards, key=lambda x: (x[0], int(x[1:])))
+    return sorted_list
 
 
-def getLooserName(score, names):
-    maxScore = max(score)
-    looser = []
-    for i in range(len(score)):
-        if score[i] == maxScore:
-            looser.append(names[i])
-    if len(looser) == 1:
-        return looser[0]
-    else:
-        index = random.randint(0, len(looser)-1)
-        return looser[index]
+cards = ['b5', 'o9', 'g6', 'g9', 'g8', 'o1', 'b10', 'o4', 'g2', 'r10']
 
-
-names = ['Dor', 'Liran', 'Yoni', 'Ido']
-score = [9, 0, 0, 9]
-
-print(getLooserName(score, names))
+print(sort_cards(cards))
