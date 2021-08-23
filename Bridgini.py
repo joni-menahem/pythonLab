@@ -3,7 +3,6 @@ from Bridgini_Functions import *
 
 
 def Bridgini(names):
-
     playersScore = [0, 0, 0, 0]
     whoLostRound = ''
     whoLostTurn = ''
@@ -42,7 +41,7 @@ def Bridgini(names):
                 # player 1 turn
                 print(newNames[0], ', You are the first to play')
                 card1 = input('choose a card to throw:')
-                while not isCardInList(player1Cards, card1):
+                while not is_valid_card(card1[0], card1, player1Cards):
                     print("the card you have selected is not valid. (the color is wrong or you don't have it)")
                     card1 = input('choose a card to throw:')
                 player1Cards.remove(card1)
@@ -51,8 +50,7 @@ def Bridgini(names):
                 # player 2 turn
                 print(newNames[1], ', Your turn to play')
                 card2 = input('choose a card to throw:')
-                while not isValidColor(card2, card1[0], isColorInList(player2Cards, card1[0])) \
-                        and not isCardInList(player2Cards, card2):
+                while not is_valid_card(card1[0], card2, player2Cards):
                     print("the card you have selected is not valid. (the color is wrong or you don't have it)")
                     card2 = input('choose a card to throw:')
                 player2Cards.remove(card2)
@@ -60,8 +58,7 @@ def Bridgini(names):
                 # player 3 turn
                 print(newNames[2], ', Your turn to play')
                 card3 = input('choose a card to throw:')
-                while not isValidColor(card3, card1[0], isColorInList(player3Cards, card1[0])) \
-                        and not isCardInList(player3Cards, card3):
+                while not is_valid_card(card1[0], card3, player3Cards):
                     print("the card you have selected is not valid. (the color is wrong or you don't have it)")
                     card3 = input('choose a card to throw:')
                 player3Cards.remove(card3)
@@ -69,8 +66,7 @@ def Bridgini(names):
                 # player 4 turn
                 print(newNames[3], ', Your turn to play')
                 card4 = input('choose a card to throw:')
-                while not isValidColor(card4, card1[0], isColorInList(player4Cards, card1[0])) \
-                        and not isCardInList(player4Cards, card4):
+                while not is_valid_card(card1[0], card4, player4Cards):
                     print("the card you have selected is not valid. (the color is wrong or you don't have it)")
                     card4 = input('choose a card to throw:')
                 player4Cards.remove(card4)
@@ -96,7 +92,7 @@ def Bridgini(names):
             whoLostRound = getLooserName(playersScore, newNames)
             roundNumber -= 1
 
-    print('The winner is:', getWinnerName(playersScore, newNames))
+    print('The winner of the game is:', getWinnerName(playersScore, newNames))
 
 
 p = ['Dor', 'Liran', 'Yoni', 'Ido']

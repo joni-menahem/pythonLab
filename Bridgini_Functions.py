@@ -74,37 +74,23 @@ def leadingColor(card):
     return color
 
 
+def is_valid_card(leading_color, card, cards):
+    # check if the card chosen is valid for play: True-Valid / False-Not Valid
+    # input: "leading_color" as a single letter, "card" as string, "cards" as list.
+    if card in cards and card[0] == leading_color:
+        return True
+    elif isColorInList(cards, leading_color):
+        return False
+    else:
+        return True
+
+
 def isColorInList(cards, color):
     # check if a list of cards contains a specific color
     inList = False
     count = 0
     for i in range(len(cards)):
         if cards[i][0] == color:
-            count += 1
-    if count != 0:
-        inList = True
-    return inList
-
-
-def isValidColor(card, color, isInList):
-    # check if a chosen card has a valid color
-    # input: a specific card (ex. 'g6'), a specific color (ex. 'g'), boolean if a specific card is in th players hand
-    # output: True / False if a card is valid for play
-    if card[0] == color:
-        if isInList:
-            return True
-        else:
-            return False
-    else:
-        return False
-
-
-def isCardInList(cards, card):
-    # check if a list of cards contains a specific card
-    inList = False
-    count = 0
-    for i in range(len(cards)):
-        if cards[i] == card:
             count += 1
     if count != 0:
         inList = True
